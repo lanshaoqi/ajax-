@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<script src="DataTableObj.js" type="text/javascript"></script>
+<script>
+    //拥有此方法修改按钮才会打开
+    UpdateButClick = function (key) {
+        alert(key);
+    }
+    //拥有此方法删除按钮才会打开
+    DeleteItemState = function (state) {
+        if (state) {
+            //alert("删除成功！");
+        } else {
+            alert("删除失败！");
+        }
+    }
+    CheckAllChange = function (valueList) {
+        //alert(valueList);
+    }
+    CheckItemChange = function (objKey) {
+        //alert(objKey.value);
+    }
+    window.onload = function () {
+        InitializationDataTable("datatableDiv", "Handler.ashx", "");
+        //setTimeout(function () { InitializationDataTable("Div1", "Handler.ashx/GetData", ""); }, 2000);
+    }
+
+    function Button1_onclick() {
+        //获取勾选的参数
+        alert(GetCheckAllValueList());
+        //InitializationDataTable("datatableDiv", "Handler.ashx/GetData", document.getElementById("Text1").value);
+    }
+	
+</script>
+<style>
+    #datatableDiv table
+    {
+        width: 800px;
+        border-left: solid 1px #C1DAD7;
+    }
+    
+    #datatableDiv table th
+    {
+        text-align: center;
+        color: #818181;
+        padding: 7px 10px;
+        border-bottom: solid 1px #C1DAD7;
+        border-top: solid 1px #C1DAD7;
+        border-right: solid 1px #C1DAD7;
+    }
+    #datatableDiv table td
+    {
+        border-right: 1px solid #C1DAD7;
+        border-bottom: 1px solid #C1DAD7;
+        background: #fbfcfc;
+        padding: 8px 10px;
+    }
+    #datatableDiv table tr.odd td
+    {
+        background: #f8f8f8;
+    }
+    #datatableDiv table tr:hover td
+    {
+        background: #fff9e1;
+    }
+    #datatableDiv table a
+    {
+        color: #7f7f7f;
+        font-size: 11px;
+        padding: 2px 6px 2px 6px;
+        cursor: pointer;
+        line-height: 14px !important;
+        text-decoration: none;
+    }
+    #datatableDiv div a
+    {
+        border: solid 1px #C1DAD7;
+        color: #7f7f7f;
+        font-size: 11px;
+        padding: 2px 6px 2px 6px;
+        cursor: pointer;
+        line-height: 14px !important;
+        text-decoration: none;
+        display: block;
+        width: 40px;
+        float: left;
+        margin-left: 9px;
+        margin-top: 15px;
+    }
+    #datatableDiv div a:hover
+    {
+        border: solid 1px #C1DAD7;
+        color: #7f7f7f;
+        font-size: 11px;
+        padding: 2px 6px 2px 6px;
+        cursor: pointer;
+        line-height: 14px !important;
+        background: #ba4c32;
+        color: #fff;
+        text-decoration: none;
+    }
+    #datatableDiv div h
+    {
+        margin-top: 15px;
+        float: left;
+        border: solid 1px #b1a874;
+        color: #7f7f7f;
+        font-size: 11px;
+        padding: 2px 6px 2px 6px;
+        cursor: pointer;
+        line-height: 14px !important;
+        border-color: #8c3521;
+        background: #ba4c32;
+        color: #fff;
+        text-decoration: none;
+        margin-left: 9px;
+        width: 40px;
+    }
+    #datatableDiv div span
+    {
+        float: left;
+        font-size: 13px;
+        margin-right: 150px;
+    }
+    #datatableDiv div
+    {
+        width: 798px;
+        border: solid 1px #C1DAD7;
+        border-top-width: 0px;
+        height: 50px;
+        line-height: 50px;
+    }
+</style>
+<style>#{divid_Lan} table{width:100%;border-left:1px solid #ddd;border-top:1px solid #ddd;}#{divid_Lan} tbody th,#{divid_Lan} tbody td{border-right:1px solid #ddd;border-bottom:1px solid #ddd;padding:8px;font-weight:normal;}#{divid_Lan} tbody tr:nth-child(even){background-color:#f9f9f9;}#{divid_Lan} tbody tr:hover{background-color:#f9f9f9;}#{divid_Lan} tbody tr:nth-child(1):hover{background-color:#fff;}#{divid_Lan}>div{margin-top:6px;font-size:12px;color:#999;}#{divid_Lan}>div span{font-size:14px;line-height:28px;}#{divid_Lan}>div p{float:right;margin:0;border:1px solid #ddd;box-shadow:0 1px 2px rgba(0,0,0,0.05);}#{divid_Lan}>div p a,#{divid_Lan}>div p h1{display:block;float:left;padding:6px 10px;border-left:1px solid #ddd;}#{divid_Lan}>div p a:nth-child(1){border:none;}#{divid_Lan}>div p h1{background-color: #f9f9f9;cursor: default;}#{divid_Lan}>div p a{color:#0d638f;text-decoration:none;}#{divid_Lan}>div p a:hover{background-color: #f9f9f9;}</style>
+<body>
+    <input id="Checkbox1" value type="checkbox" />
+    <input id="Text1" type="text" />
+    <input id="Button1" type="button" value="button" onclick="return Button1_onclick()" />
+    <div id="datatableDiv" style="margin-left: 300px; text-align: center; width: 800px;">
+    </div>
+    <br />
+    <div id="Div1" style="margin-left: 300px; text-align: center; width: 800px; margin-top: 300px;">
+    </div>
+</body>
+</html>

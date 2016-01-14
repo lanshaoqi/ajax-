@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataTableAjax</name>
+    </assembly>
+    <members>
+        <member name="T:DataTableAjax._GetDataTableDB">
+            <summary>
+            分页控件加载数据的事件
+            </summary>
+            <param name="Pf">客户端发送上来的参数</param>
+            <param name="Dt">数据表</param>
+            <param name="DisKey">绑定数据的列名-数据列名</param>
+            <param name="WhereKey">该项数据的唯一表示字段（该字段的值将会作用于删除或修改的标识）</param>
+            <param name="DataCount">数据的总条数</param>
+            <param name="PageSize">每页显示的条数</param>
+            <param name="GetDataState">请求服务器读取数据是否成功的状态默认是成功</param>
+            <param name="StateMagTxt">每次请求服务器反回的消息文本</param>
+        </member>
+        <member name="T:DataTableAjax._GetDataTableMes">
+            <summary>
+            内存分页的事件
+            </summary>
+            <param name="Dt">数据</param>
+            <param name="DisKey">绑定数据的列名-数据列</param>
+            <param name="WhereKey">该项数据的唯一表示字段（该字段的值将会作用于删除或修改的标识）</param>
+            <param name="PageSize">每页显示的条数</param>
+            <param name="GetDataState">请求服务器读取数据是否成功的状态默认是成功</param>
+            <param name="StateMagTxt">每次请求服务器反回的消息文本</param>
+        </member>
+        <member name="T:DataTableAjax._DeleteItem">
+            <summary>
+            删除的事件委托
+            </summary>
+            <param name="Pf">客户端发送请求的参数</param>
+            <param name="DelState">删除的状态（成功还是失败）</param>
+            <param name="StateMagTxt">每次请求服务器反回的消息文本</param>
+        </member>
+        <member name="T:DataTableAjax.ValueToUserInfo">
+            <summary>
+            绑定数据时处理数据的委托
+            </summary>
+            <param name="Value">该列绑定的值</param>
+            <param name="RowItemArry">该列的所有兄弟列的值（包含从数据库读取的所有列以及用户自定义绑定的所有列）</param>
+        </member>
+        <member name="T:DataTableAjax.DataTableManager">
+            <summary>
+            分页控件统一处理函数
+            </summary>
+        </member>
+        <member name="M:DataTableAjax.DataTableManager.#ctor(System.Web.HttpContext,DataTableAjax.PageDataTableType)">
+            <summary>
+            创建对象
+            </summary>
+            <param name="Context">请求的HttpContext</param>
+            <param name="PageType">分页类型内存还是数据库分页</param>
+        </member>
+        <member name="M:DataTableAjax.DataTableManager.PostManagerLod">
+            <summary>
+            初始化的函数，该函数必须在事件绑定之后。否则无法触发绑定的事件！当分页方式选择为内存分页(PageType==MesPage)时，使用的Handler页面的Session必须是可读写状态（继承System.Web.SessionState.IRequiresSessionState）
+            </summary>
+        </member>
+        <member name="M:DataTableAjax.DataTableManager.GetJsFile(System.Web.HttpContext)">
+            <summary>
+            读取js文件
+            </summary>
+            <param name="Context"></param>
+        </member>
+        <member name="E:DataTableAjax.DataTableManager.GetDataTableDB">
+            <summary>
+            分页控件加载数据的事件
+            </summary>
+        </member>
+        <member name="E:DataTableAjax.DataTableManager.DeleteItem">
+            <summary>
+            删除的事件
+            </summary>
+        </member>
+        <member name="E:DataTableAjax.DataTableManager.GetDataTableMes">
+            <summary>
+            如果是内存分页，将会触发
+            </summary>
+        </member>
+        <member name="P:DataTableAjax.DataTableManager.ShowTableStyle">
+            <summary>
+            显示的样式(注意：必须在引用的js路径上带有显示的DIV的id时才有效！例如xxx.ashx?divid=xxx)
+            </summary>
+        </member>
+        <member name="T:DataTableAjax.PostType">
+            <summary>
+            请求的类型   删除还是读取数据
+            </summary>
+        </member>
+        <member name="T:DataTableAjax.ColumnShowType">
+            <summary>
+            列的显示属性
+            </summary>
+        </member>
+        <member name="T:DataTableAjax.DataTableStyle">
+            <summary>
+            表格是样式
+            </summary>
+        </member>
+        <member name="T:DataTableAjax.PageDataTableType">
+            <summary>
+            分页的方式   内存分页   数据库分页
+            </summary>
+        </member>
+        <member name="T:DataTableAjax.DeleteItemState">
+            <summary>
+            删除是否成功
+            </summary>
+        </member>
+        <member name="T:DataTableAjax.GetDataState">
+            <summary>
+            读取数据是否成功
+            </summary>
+        </member>
+        <member name="P:DataTableAjax.PostForm.PageIndex">
+            <summary>
+            当前页的索引
+            </summary>
+        </member>
+        <member name="P:DataTableAjax.PostForm.WhereTxt">
+            <summary>
+            条件查询的条件
+            </summary>
+        </member>
+        <member name="P:DataTableAjax.PostForm.WhereKey">
+            <summary>
+            删除、修改函数的定义条件参数
+            </summary>
+        </member>
+        <member name="P:DataTableAjax.PostForm.PostTypeFun">
+            <summary>
+            请求是删除还是读取数据
+            </summary>
+        </member>
+        <member name="T:DataTableAjax.UserEval">
+            <summary>
+            绑定数据的对象模版
+            </summary>
+        </member>
+        <member name="M:DataTableAjax.UserEval.#ctor(System.String)">
+            <summary>
+            绑定字段
+            </summary>
+            <param name="_KeyName">字段名称</param>
+        </member>
+        <member name="M:DataTableAjax.UserEval.#ctor(System.String,DataTableAjax.ColumnShowType)">
+            <summary>
+            绑定字段
+            </summary>
+            <param name="_KeyName">字段名称</param>
+            <param name="_KeyColumnShowType">显示类型</param>
+        </member>
+        <member name="M:DataTableAjax.UserEval.#ctor(System.String,System.String)">
+            <summary>
+            绑定字段并进行处理
+            </summary>
+            <param name="_KeyName">字段名称</param>
+            <param name="_KeyValueToUser">用于处理的字符串例如index?id=[value]程序自动将[value]替换为该字段的值</param>
+        </member>
+        <member name="M:DataTableAjax.UserEval.#ctor(System.String,System.String,DataTableAjax.ColumnShowType)">
+            <summary>
+            绑定字段并进行处理
+            </summary>
+            <param name="_KeyName">字段名称</param>
+            <param name="_KeyValueToUser">用于处理的字符串例如index?id=[value]程序自动将[value]替换为该字段的值</param>
+            <param name="_KeyColumnShowType">显示类型</param>
+        </member>
+        <member name="M:DataTableAjax.UserEval.#ctor(System.String,DataTableAjax.ValueToUserInfo)">
+            <summary>
+            绑定字段并自定义方法进行处理
+            </summary>
+            <param name="_KeyName">字段名称</param>
+            <param name="_ValueToUserInfoHandle">需要绑定的委托</param>
+        </member>
+        <member name="M:DataTableAjax.UserEval.#ctor(System.String,DataTableAjax.ValueToUserInfo,DataTableAjax.ColumnShowType)">
+            <summary>
+            绑定字段并自定义方法进行处理
+            </summary>
+            <param name="_KeyName">字段名称</param>
+            <param name="_ValueToUserInfoHandle">需要绑定的委托</param>
+            <param name="_KeyColumnShowType">显示类型</param>
+        </member>
+    </members>
+</doc>
